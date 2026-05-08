@@ -181,16 +181,42 @@
     .kv b { color:#fff; font-size: 13px; }
 
     .timeline { position: relative; display:grid; gap:12px; }
-    .phase { display:grid; grid-template-columns: 160px 1fr; gap: 14px; padding: 16px; border-radius: 22px; border:1px solid var(--line); background: rgba(255,255,255,.045); }
+    .phase { display:grid; grid-template-columns: 160px 1fr; gap: 14px; padding: 18px; border-radius: 22px; border:1px solid var(--line); background: rgba(255,255,255,.045); }
     .phase-label { color: var(--cyan); font-weight: 950; }
-    .phase h3 { margin-bottom: 5px; font-size: 17px; }
-    .phase p { color: var(--muted); font-size: 14px; }
+    .phase-label small { display:block; color: var(--muted); font-size: 11px; font-weight: 700; margin-top: 4px; letter-spacing: .4px; text-transform: uppercase; }
+    .phase h3 { margin-bottom: 6px; font-size: 17px; }
+    .phase > div > p { color: var(--muted); font-size: 14px; margin-bottom: 12px; }
+    .phase-meta { display:grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 10px; }
+    .phase-meta > div { background: rgba(255,255,255,.04); border: 1px solid rgba(139,190,232,.12); border-radius: 14px; padding: 10px 12px; }
+    .phase-meta small { display:block; color: var(--cyan); font-size: 10px; font-weight: 900; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 5px; }
+    .phase-meta span { color: var(--soft); font-size: 12.5px; line-height: 1.45; display:block; }
+    .phase-meta ul { margin: 0; padding-left: 16px; color: var(--soft); font-size: 12.5px; line-height: 1.45; }
+    .phase-meta ul li { margin-bottom: 2px; }
+
+    .scenarios { display:grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+    .scenario { background: var(--panel); border:1px solid var(--line); border-radius: 22px; padding: 18px; display:flex; flex-direction:column; gap: 10px; }
+    .scenario-head { display:flex; align-items:center; gap:10px; flex-wrap:wrap; }
+    .scenario-tag { font-size: 11px; font-weight: 900; letter-spacing: .8px; text-transform: uppercase; color: var(--cyan); background: rgba(34,216,255,.1); border:1px solid rgba(34,216,255,.22); padding: 4px 9px; border-radius: 999px; }
+    .scenario-tag.amber { color: var(--amber); background: rgba(255,209,102,.09); border-color: rgba(255,209,102,.25); }
+    .scenario-tag.pink { color: var(--pink); background: rgba(255,106,162,.09); border-color: rgba(255,106,162,.25); }
+    .scenario-tag.green { color: var(--green); background: rgba(65,241,143,.09); border-color: rgba(65,241,143,.25); }
+    .scenario h3 { font-size: 15px; letter-spacing: -.2px; }
+    .scenario .mini-chat { display:flex; flex-direction:column; gap:6px; background: rgba(7,18,31,.6); border-radius: 14px; padding: 10px; border:1px solid rgba(139,190,232,.1); }
+    .mini-bubble { font-size: 12px; line-height: 1.4; padding: 7px 10px; border-radius: 10px; max-width: 92%; }
+    .mini-bubble.user { background: #dcf8c6; color:#111827; align-self:flex-end; border-radius: 10px 3px 10px 10px; }
+    .mini-bubble.bot { background: #fff; color:#111827; align-self:flex-start; border-radius: 3px 10px 10px 10px; }
+    .scenario-out { color: var(--soft); font-size: 12.5px; line-height: 1.45; border-left: 3px solid var(--cyan); padding: 4px 0 4px 10px; }
+    .scenario-out b { color: #fff; }
 
     .integrations { display:grid; grid-template-columns: repeat(4,1fr); gap: 14px; }
     .int-card { text-align:center; background: rgba(255,255,255,.045); border:1px solid var(--line); border-radius: 22px; padding: 18px 14px; }
     .int-card .emoji { font-size: 28px; margin-bottom: 8px; }
     .int-card b { display:block; color:#fff; margin-bottom: 4px; }
     .int-card span { color: var(--muted); font-size: 12px; }
+    .int-decision { margin-top: 16px; padding: 18px 20px; border-radius: 22px; border:1px solid rgba(34,216,255,.22); background: linear-gradient(135deg, rgba(34,216,255,.08), rgba(40,216,176,.05)); display:grid; grid-template-columns: auto 1fr; gap: 16px; align-items:center; }
+    .int-decision .badge-step { font-size: 11px; font-weight: 900; letter-spacing: 1px; text-transform: uppercase; color: var(--cyan); background: rgba(34,216,255,.12); border:1px solid rgba(34,216,255,.25); padding: 8px 12px; border-radius: 999px; white-space: nowrap; }
+    .int-decision h3 { color: #fff; font-size: 16px; margin-bottom: 6px; letter-spacing: -.2px; }
+    .int-decision p { color: var(--soft); font-size: 13.5px; line-height: 1.5; }
 
     .quote {
       border-radius: 30px; padding: 28px; border:1px solid rgba(38,215,255,.2);
@@ -211,6 +237,9 @@
       .hero, .split { grid-template-columns: 1fr; }
       .cards, .flow, .integrations { grid-template-columns: repeat(2,1fr); }
       .quote { grid-template-columns: 1fr; }
+      .scenarios { grid-template-columns: 1fr; }
+      .phase-meta { grid-template-columns: 1fr; }
+      .int-decision { grid-template-columns: 1fr; }
     }
     @media (max-width: 640px) {
       .cards, .flow, .integrations { grid-template-columns: 1fr; }
@@ -327,6 +356,82 @@
       </div>
     </section>
 
+    <section id="casos">
+      <div class="section-title">
+        <div><div class="section-kicker">Casos que o agente sabe lidar</div><h2>O fluxo acima é o caso fácil. Veja como ele se sai nos casos reais.</h2></div>
+        <p class="section-note">Cada cenário foi modelado para terminar de um jeito previsível: ou avança para a recepção com ficha pronta, ou direciona o paciente para a ação correta antes do agendamento.</p>
+      </div>
+      <div class="scenarios">
+
+        <article class="scenario">
+          <div class="scenario-head"><span class="scenario-tag amber">Sem pedido médico</span><h3>Paciente quer agendar mas não tem pedido</h3></div>
+          <div class="mini-chat">
+            <div class="mini-bubble user">Quero marcar uma ressonância de joelho.</div>
+            <div class="mini-bubble bot">Posso te ajudar. Você já está com o pedido médico em mãos?</div>
+            <div class="mini-bubble user">Ainda não, vou consultar amanhã.</div>
+            <div class="mini-bubble bot">Sem problemas. Assim que tiver o pedido, é só me reenviar por aqui (foto ou PDF). Vou anotar seu interesse e te lembro em 3 dias se não tiver retorno.</div>
+          </div>
+          <div class="scenario-out"><b>Saída:</b> contato classificado como "aguardando pedido", sem ocupar a recepção. Lembrete automático em 3 dias se o paciente não voltar.</div>
+        </article>
+
+        <article class="scenario">
+          <div class="scenario-head"><span class="scenario-tag green">Pergunta de preço</span><h3>Paciente particular querendo orçamento</h3></div>
+          <div class="mini-chat">
+            <div class="mini-bubble user">Quanto custa uma tomografia de tórax particular?</div>
+            <div class="mini-bubble bot">Posso te passar essa informação. Você já tem pedido médico para esse exame? E é com ou sem contraste?</div>
+            <div class="mini-bubble user">Tenho. Sem contraste.</div>
+            <div class="mini-bubble bot">Perfeito. Vou pedir para a equipe te enviar o valor atualizado e formas de pagamento. Posso já reservar uma janela de horário enquanto isso?</div>
+          </div>
+          <div class="scenario-out"><b>Saída:</b> recepção recebe ficha "orçamento + intenção de agendar". Lead vira oportunidade comercial em vez de só consulta de preço.</div>
+        </article>
+
+        <article class="scenario">
+          <div class="scenario-head"><span class="scenario-tag pink">Convênio não atendido</span><h3>Paciente cita convênio fora da lista</h3></div>
+          <div class="mini-chat">
+            <div class="mini-bubble user">Vocês atendem Bradesco Saúde para mamografia?</div>
+            <div class="mini-bubble bot">Esse convênio hoje não está na nossa lista de credenciamentos para mamografia. Posso te passar o valor particular ou verificar se há reembolso direto pelo seu plano?</div>
+            <div class="mini-bubble user">Pode ser particular sim.</div>
+            <div class="mini-bubble bot">Combinado. Vou te enviar o valor e as opções de horário disponíveis nesta semana.</div>
+          </div>
+          <div class="scenario-out"><b>Saída:</b> conversa não é descartada. O agente oferece alternativa válida (particular/reembolso) e ainda assim qualifica para a recepção.</div>
+        </article>
+
+        <article class="scenario">
+          <div class="scenario-head"><span class="scenario-tag">Pede resultado</span><h3>Paciente quer resultado de exame</h3></div>
+          <div class="mini-chat">
+            <div class="mini-bubble user">Bom dia, gostaria do resultado do meu exame.</div>
+            <div class="mini-bubble bot">Bom dia! Resultados são liberados pela nossa equipe interna. Pode me confirmar seu nome completo e a data do exame? Vou direcionar para a pessoa responsável retornar o contato hoje.</div>
+            <div class="mini-bubble user">João Lima, exame foi terça-feira.</div>
+            <div class="mini-bubble bot">Anotado, João. A equipe vai te chamar pelo próprio WhatsApp ainda hoje com o status.</div>
+          </div>
+          <div class="scenario-out"><b>Saída:</b> nada é prometido sem validação humana. Caso sensível vai para a fila certa, com dados de identificação já coletados.</div>
+        </article>
+
+        <article class="scenario">
+          <div class="scenario-head"><span class="scenario-tag">Dúvida de preparo</span><h3>Paciente já agendado pergunta como se preparar</h3></div>
+          <div class="mini-chat">
+            <div class="mini-bubble user">Tenho US de abdome total amanhã. Preciso ficar em jejum?</div>
+            <div class="mini-bubble bot">Sim. Para ultrassom de abdome total: jejum de 6 horas e ingestão de 1 litro de água 1h antes, segurando o xixi. Quer que eu envie isso em formato de lembrete também?</div>
+            <div class="mini-bubble user">Quero sim, obrigado.</div>
+            <div class="mini-bubble bot">Combinado. Mando às 18h de hoje e mais um lembrete amanhã cedo.</div>
+          </div>
+          <div class="scenario-out"><b>Saída:</b> preparo padronizado pelo conteúdo validado pela clínica. Reduz remarcação por preparo errado e libera a recepção dessa pergunta repetitiva.</div>
+        </article>
+
+        <article class="scenario">
+          <div class="scenario-head"><span class="scenario-tag pink">Caso sensível</span><h3>Paciente menciona algo que exige cuidado humano</h3></div>
+          <div class="mini-chat">
+            <div class="mini-bubble user">Estou com muita dor, o médico pediu urgente para hoje.</div>
+            <div class="mini-bubble bot">Entendi. Vou priorizar seu contato e já chamar a recepção para falar com você direto. Pode me confirmar seu nome e o exame solicitado para acelerar?</div>
+            <div class="mini-bubble user">Ana Pereira, ressonância de coluna lombar urgente.</div>
+            <div class="mini-bubble bot">Recebido, Ana. Já encaminhei para a recepção como prioritário. Em instantes alguém vai te chamar por aqui.</div>
+          </div>
+          <div class="scenario-out"><b>Saída:</b> agente identifica urgência por palavras-chave e faz handoff imediato para humano com a ficha pronta. Nunca tenta resolver sozinho casos clínicos.</div>
+        </article>
+
+      </div>
+    </section>
+
     <section>
       <div class="section-title">
         <div><div class="section-kicker">O que o agente coleta</div><h2>Ficha de qualificação antes do humano entrar.</h2></div>
@@ -342,12 +447,49 @@
     <section id="fases">
       <div class="section-title">
         <div><div class="section-kicker">Implantação por fases</div><h2>Começar seguro. Automatizar onde a agenda permitir.</h2></div>
+        <p class="section-note">Cada fase tem prazo, entregável e o que precisa do lado da clínica para sair do papel. As campanhas (recuperação de leads, lembretes etc.) ficam separadas mais abaixo, porque não dependem das fases técnicas.</p>
       </div>
       <div class="timeline">
-        <article class="phase"><div class="phase-label">Fase 1</div><div><h3>Pré-atendimento e qualificação</h3><p>Fluxo no WhatsApp para entender demanda, coletar dados essenciais, classificar o contato e entregar resumo para a recepção.</p></div></article>
-        <article class="phase"><div class="phase-label">Fase 2</div><div><h3>Agenda assistida</h3><p>O agente consulta disponibilidade quando houver fonte confiável e sugere opções; a confirmação final ainda pode ficar com a equipe.</p></div></article>
-        <article class="phase"><div class="phase-label">Fase 3</div><div><h3>Agendamento automático</h3><p>Se o sistema da NID permitir integração via API, Google Calendar, n8n ou outro conector, o fluxo evolui para confirmação automática.</p></div></article>
-        <article class="phase"><div class="phase-label">Fase 4</div><div><h3>Campanhas para aquecer leads</h3><p>Recuperar quem pediu orçamento e não agendou, nutrir contatos interessados e enviar lembretes respeitando opt-in, LGPD e regras de saúde.</p></div></article>
+
+        <article class="phase">
+          <div class="phase-label">Fase 1<small>2 a 3 semanas</small></div>
+          <div>
+            <h3>Pré-atendimento e qualificação</h3>
+            <p>Fluxo no WhatsApp para entender demanda, coletar dados essenciais, classificar o contato e entregar resumo para a recepção.</p>
+            <div class="phase-meta">
+              <div><small>Entregável</small><span>Agente no WhatsApp Business da NID, fluxos dos 6 cenários principais, painel de resumo para a recepção e treinamento de 1h da equipe.</span></div>
+              <div><small>Precisa do cliente</small><ul><li>Número WhatsApp Business ativo</li><li>Lista de exames com preparos validados</li><li>Lista de convênios atendidos</li><li>2h de reunião com a gestora</li></ul></div>
+              <div><small>Sucesso quando</small><span>≥ 80% dos contatos chegam à recepção com a ficha mínima preenchida (exame, convênio, pedido médico, urgência).</span></div>
+            </div>
+          </div>
+        </article>
+
+        <article class="phase">
+          <div class="phase-label">Fase 2<small>+2 a 4 semanas após Fase 1</small></div>
+          <div>
+            <h3>Agenda assistida</h3>
+            <p>O agente consulta disponibilidade quando houver fonte confiável e sugere opções de horário; a confirmação final ainda pode ficar com a equipe.</p>
+            <div class="phase-meta">
+              <div><small>Entregável</small><span>Consulta de horários conectada à fonte definida (Google Calendar, planilha controlada ou exportação do sistema), sugestão de até 3 janelas e marcação de "pré-reserva" para a recepção confirmar.</span></div>
+              <div><small>Precisa do cliente</small><ul><li>Definição de qual fonte de agenda usar</li><li>Acesso de leitura à agenda escolhida</li><li>Regras de bloqueio (feriados, almoço, manutenção de equipamento)</li></ul></div>
+              <div><small>Sucesso quando</small><span>Recepção apenas confirma horários sugeridos pelo agente em ≥ 60% dos casos, sem refazer a busca do zero.</span></div>
+            </div>
+          </div>
+        </article>
+
+        <article class="phase">
+          <div class="phase-label">Fase 3<small>+3 a 6 semanas após Fase 2</small></div>
+          <div>
+            <h3>Agendamento automático</h3>
+            <p>Se o sistema da NID permitir integração via API, Google Calendar, n8n ou outro conector, o fluxo evolui para confirmação automática sem intervenção humana nos casos simples.</p>
+            <div class="phase-meta">
+              <div><small>Entregável</small><span>Conector entre H-TALKS e o sistema de agenda, regras de elegibilidade ("o que pode fechar sozinho"), confirmação por WhatsApp e log auditável de cada agendamento criado pelo agente.</span></div>
+              <div><small>Precisa do cliente</small><ul><li>API/integração disponível no sistema atual (ou aprovação para usar Google Calendar como agenda oficial)</li><li>Lista de exames elegíveis para fechamento automático</li><li>Aprovação jurídica/LGPD do fluxo</li></ul></div>
+              <div><small>Sucesso quando</small><span>≥ 30% dos exames simples (US, raio-X) são fechados de ponta a ponta pelo agente, sem recepção tocar.</span></div>
+            </div>
+          </div>
+        </article>
+
       </div>
     </section>
 
@@ -361,6 +503,13 @@
         <div class="int-card"><div class="emoji">🔌</div><b>API do sistema</b><span>melhor caminho para agenda oficial</span></div>
         <div class="int-card"><div class="emoji">⚙️</div><b>n8n / Webhook</b><span>camada de integração e regras</span></div>
         <div class="int-card"><div class="emoji">👩‍💼</div><b>Humano no loop</b><span>seguro para convênios e casos complexos</span></div>
+      </div>
+      <div class="int-decision">
+        <div class="badge-step">Próximo passo técnico</div>
+        <div>
+          <h3>Para a NID, qual desses caminhos vai rodar é uma decisão de descoberta — não de proposta.</h3>
+          <p>Em uma reunião de 45 minutos validamos: (1) qual sistema de agenda a clínica usa hoje, (2) se ele tem API, exportação ou integração nativa, (3) como a recepção opera no dia a dia, e (4) o volume real de mensagens por dia. Com essas respostas, fechamos qual integração entra na Fase 2 (agenda assistida) e qual evolui para a Fase 3 (automática). Enquanto isso não estiver validado, a Fase 1 já roda independente — o pré-atendimento não depende de integração com agenda.</p>
+        </div>
       </div>
     </section>
 
