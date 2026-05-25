@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Zeno SS • Monitor de Orçamentos Parados — SLA 5 min</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #07111f;
+      --panel: rgba(15, 23, 42, .84);
+      --panel-2: rgba(15, 23, 42, .62);
+      --line: rgba(148, 163, 184, .18);
+      --text: #e5eefb;
+      --muted: #94a3b8;
+      --cyan: #22d3ee;
+      --blue: #3b82f6;
+      --green: #22c55e;
+      --yellow: #f59e0b;
+      --red: #ef4444;
+      --purple: #a855f7;
+      --shadow: 0 24px 80px rgba(0, 0, 0, .34);
+      --radius: 24px;
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(34, 211, 238, .22), transparent 34%),
+        radial-gradient(circle at 80% 10%, rgba(59, 130, 246, .18), transparent 30%),
+        radial-gradient(circle at 50% 90%, rgba(168, 85, 247, .13), transparent 36%),
+        var(--bg);
+      min-height: 100vh;
+    }
+
+    .page { max-width: 1320px; margin: 0 auto; padding: 34px 26px 48px; }
+
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      align-items: center;
+      margin-bottom: 22px;
+    }
+
+    .brand { display: flex; align-items: center; gap: 14px; }
+    .brand-mark {
+      width: 48px; height: 48px; border-radius: 16px;
+      display: grid; place-items: center;
+      background: linear-gradient(135deg, var(--cyan), var(--blue));
+      color: #03101f;
+      font-weight: 900;
+      box-shadow: 0 18px 45px rgba(34, 211, 238, .25);
+    }
+    .brand b { display:block; font-family:Sora, sans-serif; letter-spacing:-.04em; font-size: 18px; }
+    .brand span { color: var(--muted); font-size: 13px; }
+
+    .live-pill {
+      display: inline-flex; align-items: center; gap: 9px;
+      padding: 10px 14px;
+      border: 1px solid rgba(34, 197, 94, .28);
+      background: rgba(34, 197, 94, .08);
+      border-radius: 999px;
+      color: #bbf7d0;
+      font-size: 13px;
+      font-weight: 700;
+    }
+    .pulse { width: 9px; height: 9px; border-radius: 50%; background: var(--green); box-shadow: 0 0 0 7px rgba(34,197,94,.12); }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      background: linear-gradient(135deg, rgba(15,23,42,.92), rgba(15,23,42,.62));
+      border-radius: 32px;
+      padding: 30px;
+      box-shadow: var(--shadow);
+      margin-bottom: 20px;
+    }
+    .hero:after {
+      content:""; position:absolute; right:-90px; top:-90px; width:260px; height:260px;
+      background: radial-gradient(circle, rgba(34,211,238,.18), transparent 62%);
+    }
+    .hero-grid { display:grid; grid-template-columns: 1.5fr .9fr; gap: 24px; align-items: end; position:relative; z-index:1; }
+    h1 {
+      font-family:Sora, sans-serif;
+      margin: 0 0 12px;
+      font-size: clamp(30px, 4vw, 54px);
+      line-height: .98;
+      letter-spacing: -.065em;
+    }
+    .subtitle { margin: 0; color: #b6c4d8; max-width: 760px; font-size: 16px; line-height: 1.65; }
+    .meta { display:flex; gap: 10px; flex-wrap: wrap; margin-top: 20px; }
+    .chip { color:#cbd5e1; border:1px solid var(--line); background:rgba(148,163,184,.07); padding: 9px 11px; border-radius: 999px; font-size: 12px; font-weight: 700; }
+
+    .whatsapp-preview {
+      border: 1px solid rgba(34, 197, 94, .22);
+      background: linear-gradient(180deg, rgba(20, 83, 45, .24), rgba(15, 23, 42, .72));
+      border-radius: 24px;
+      padding: 16px;
+    }
+    .wa-title { display:flex; justify-content:space-between; color:#dcfce7; font-weight:800; font-size:13px; margin-bottom:12px; }
+    .wa-bubble {
+      background: #dcf8c6; color:#102114; border-radius: 16px 16px 4px 16px; padding: 13px 14px; font-size: 13px; line-height: 1.45;
+      box-shadow: 0 16px 40px rgba(0,0,0,.22);
+      white-space: pre-line;
+    }
+
+    .kpis { display:grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin: 18px 0; }
+    .kpi {
+      border: 1px solid var(--line); background: var(--panel); border-radius: var(--radius); padding: 20px; box-shadow: 0 18px 55px rgba(0,0,0,.18);
+    }
+    .kpi small { color: var(--muted); font-weight: 700; text-transform: uppercase; font-size: 11px; letter-spacing: .08em; }
+    .kpi b { display:block; font-family:Sora,sans-serif; font-size: 36px; letter-spacing:-.05em; margin-top: 8px; }
+    .kpi span { color: #b6c4d8; font-size: 13px; }
+    .kpi.danger b { color: var(--red); }
+    .kpi.warn b { color: var(--yellow); }
+    .kpi.ok b { color: var(--green); }
+    .kpi.info b { color: var(--cyan); }
+
+    .content { display:grid; grid-template-columns: 1.75fr .85fr; gap: 18px; align-items:start; }
+    .panel {
+      border: 1px solid var(--line);
+      background: var(--panel);
+      border-radius: var(--radius);
+      box-shadow: 0 18px 55px rgba(0,0,0,.18);
+      overflow:hidden;
+    }
+    .panel-head { padding: 18px 20px; border-bottom: 1px solid var(--line); display:flex; justify-content:space-between; gap:16px; align-items:center; }
+    .panel h2 { margin:0; font-family:Sora,sans-serif; font-size: 18px; letter-spacing:-.03em; }
+    .panel p { margin:5px 0 0; color: var(--muted); font-size: 13px; }
+
+    table { width:100%; border-collapse: collapse; }
+    th, td { padding: 15px 18px; text-align:left; border-bottom: 1px solid rgba(148,163,184,.12); font-size: 13px; vertical-align: middle; }
+    th { color:#9fb1c9; font-size: 11px; text-transform: uppercase; letter-spacing:.08em; background: rgba(2,6,23,.18); }
+    tr:last-child td { border-bottom: 0; }
+    .order { font-weight:900; color:#eaf5ff; }
+    .client { font-weight:700; }
+    .sub { color:var(--muted); font-size:12px; margin-top:3px; }
+    .money { font-weight:800; white-space:nowrap; }
+    .age { font-weight:900; }
+    .age.danger { color:#fecaca; }
+    .age.warn { color:#fde68a; }
+    .badge { display:inline-flex; align-items:center; gap:7px; padding: 7px 10px; border-radius: 999px; font-weight:800; font-size: 11px; white-space:nowrap; }
+    .badge:before { content:""; width:7px; height:7px; border-radius:50%; background: currentColor; }
+    .b-danger { color:#fecaca; background:rgba(239,68,68,.12); border:1px solid rgba(239,68,68,.2); }
+    .b-warn { color:#fde68a; background:rgba(245,158,11,.11); border:1px solid rgba(245,158,11,.2); }
+    .b-ok { color:#bbf7d0; background:rgba(34,197,94,.10); border:1px solid rgba(34,197,94,.2); }
+    .b-info { color:#bae6fd; background:rgba(14,165,233,.10); border:1px solid rgba(14,165,233,.2); }
+
+    .btn {
+      border: 1px solid rgba(34, 211, 238, .25);
+      background: rgba(34, 211, 238, .10);
+      color: #cffafe;
+      border-radius: 12px;
+      padding: 9px 11px;
+      font-weight:800;
+      font-size:12px;
+    }
+
+    .side { display:flex; flex-direction:column; gap: 18px; }
+    .timeline { padding: 8px 20px 18px; }
+    .event { display:grid; grid-template-columns: 34px 1fr; gap: 12px; padding: 14px 0; border-bottom: 1px solid rgba(148,163,184,.12); }
+    .event:last-child { border-bottom: 0; }
+    .dot { width: 32px; height: 32px; border-radius: 12px; display:grid; place-items:center; background:rgba(34,211,238,.1); color:var(--cyan); font-weight:900; }
+    .event b { display:block; font-size:13px; margin-bottom:3px; }
+    .event span { display:block; color:var(--muted); font-size:12px; line-height:1.45; }
+
+    .rules { padding: 18px 20px; display:grid; gap: 12px; }
+    .rule { border:1px solid rgba(148,163,184,.14); background:rgba(2,6,23,.18); border-radius:16px; padding: 13px; }
+    .rule b { display:block; font-size:13px; margin-bottom:4px; }
+    .rule span { color:var(--muted); font-size:12px; line-height:1.45; }
+
+    .footer { color:var(--muted); font-size:12px; margin-top:18px; display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap; }
+
+    @media (max-width: 980px) {
+      .hero-grid, .content { grid-template-columns: 1fr; }
+      .kpis { grid-template-columns: repeat(2, 1fr); }
+      .topbar { align-items:flex-start; flex-direction:column; }
+    }
+    @media (max-width: 640px) {
+      .page { padding: 18px 12px 32px; }
+      .hero { padding: 20px; border-radius: 24px; }
+      .kpis { grid-template-columns: 1fr; }
+      th:nth-child(4), td:nth-child(4), th:nth-child(5), td:nth-child(5) { display:none; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="topbar">
+      <div class="brand">
+        <div class="brand-mark">Z</div>
+        <div>
+          <b>Zeno SS • Monitor Comercial</b>
+          <span>MVP H-TALKS / HEADS Tecnologia • Piloto SLA 5 min</span>
+        </div>
+      </div>
+      <div class="live-pill"><span class="pulse"></span> Monitor ativo • consulta a cada 1 minuto</div>
+    </div>
+
+    <section class="hero">
+      <div class="hero-grid">
+        <div>
+          <h1>Orçamentos parados antes de virar venda.</h1>
+          <p class="subtitle">Painel mockado do MVP para acompanhar orçamentos/vendas pendentes na SS/Gestão Parts, identificar estouro de SLA inicial de 5 minutos e disparar alertas para a operação.</p>
+          <div class="meta">
+            <span class="chip">Fonte: /erpssplus/v3/pedido/feed</span>
+            <span class="chip">SLA inicial do piloto: 5 min</span>
+            <span class="chip">Modo: read-only</span>
+            <span class="chip">Anti-spam: 1 alerta + lembrete em 60 min</span>
+          </div>
+        </div>
+        <aside class="whatsapp-preview">
+          <div class="wa-title"><span>Preview WhatsApp</span><span>09:14</span></div>
+          <div class="wa-bubble">⚠️ Orçamento parado há 6 minutos
+
+Pedido: 112068
+Cliente: ALISSON RIBEIRO
+Valor: R$ 1.490,34
+Status: venda pendente / sem NF-e
+
+Ação: favor atualizar no painel: faturar, cancelar, retomar contato ou marcar como aguardando cliente.</div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="kpis">
+      <div class="kpi info"><small>Orçamentos hoje</small><b>9</b><span>retornados pelo feed</span></div>
+      <div class="kpi danger"><small>Fora do SLA</small><b>2</b><span>acima de 5 minutos</span></div>
+      <div class="kpi warn"><small>Em atenção</small><b>2</b><span>entre 3 e 5 minutos</span></div>
+      <div class="kpi ok"><small>Tratados</small><b>4</b><span>faturados/cancelados/aguardando cliente</span></div>
+    </section>
+
+    <section class="content">
+      <div class="panel">
+        <div class="panel-head">
+          <div>
+            <h2>Fila de orçamentos monitorados</h2>
+            <p>Dados simulados para visualização do fluxo V1 com SLA inicial de 5 minutos.</p>
+          </div>
+          <button class="btn">Atualizado 09:14</button>
+        </div>
+        <table>
+          <thead>
+            <tr>
+              <th>Pedido</th>
+              <th>Cliente</th>
+              <th>Tempo</th>
+              <th>Valor</th>
+              <th>Responsável</th>
+              <th>Status</th>
+              <th>Ação</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="order">#112068</span><div class="sub">Emitido 08:50</div></td>
+              <td><span class="client">Alisson Ribeiro</span><div class="sub">Empresa 0001 • Série 0</div></td>
+              <td><span class="age danger">6 min</span></td>
+              <td><span class="money">R$ 1.490,34</span></td>
+              <td>A identificar<div class="sub">campo pendente na API</div></td>
+              <td><span class="badge b-danger">Fora do SLA</span></td>
+              <td><button class="btn">Alertado</button></td>
+            </tr>
+            <tr>
+              <td><span class="order">#112069</span><div class="sub">Emitido 08:42</div></td>
+              <td><span class="client">Marcos Vinícius</span><div class="sub">Empresa 0001 • Série 0</div></td>
+              <td><span class="age danger">8 min</span></td>
+              <td><span class="money">R$ 860,00</span></td>
+              <td>A identificar<div class="sub">grupo central</div></td>
+              <td><span class="badge b-danger">Fora do SLA</span></td>
+              <td><button class="btn">Marcar status</button></td>
+            </tr>
+            <tr>
+              <td><span class="order">#112070</span><div class="sub">Emitido 08:56</div></td>
+              <td><span class="client">Auto Peças Duarte</span><div class="sub">Empresa 0001 • Série 0</div></td>
+              <td><span class="age warn">4 min</span></td>
+              <td><span class="money">R$ 2.318,90</span></td>
+              <td>A identificar</td>
+              <td><span class="badge b-warn">Quase SLA</span></td>
+              <td><button class="btn">Aguardar</button></td>
+            </tr>
+            <tr>
+              <td><span class="order">#112071</span><div class="sub">Emitido 09:01</div></td>
+              <td><span class="client">Oficina São Lucas</span><div class="sub">Empresa 0001 • Série 0</div></td>
+              <td><span class="age warn">2 min</span></td>
+              <td><span class="money">R$ 734,20</span></td>
+              <td>A identificar</td>
+              <td><span class="badge b-info">Dentro do prazo</span></td>
+              <td><button class="btn">Monitorando</button></td>
+            </tr>
+            <tr>
+              <td><span class="order">#112066</span><div class="sub">Emitido 08:18</div></td>
+              <td><span class="client">J. Pereira Mecânica</span><div class="sub">NF-e 89421</div></td>
+              <td><span class="age">—</span></td>
+              <td><span class="money">R$ 516,75</span></td>
+              <td>—</td>
+              <td><span class="badge b-ok">Resolvido</span></td>
+              <td><button class="btn">Arquivado</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <aside class="side">
+        <div class="panel">
+          <div class="panel-head">
+            <div>
+              <h2>Regras do MVP</h2>
+              <p>Critérios para alerta automático.</p>
+            </div>
+          </div>
+          <div class="rules">
+            <div class="rule"><b>1. Orçamento aberto</b><span>Retornado no feed do dia com tipo “Orçamento”.</span></div>
+            <div class="rule"><b>2. Sem faturamento</b><span>`nfe_numero` e `nfe_chave` vazios.</span></div>
+            <div class="rule"><b>3. SLA estourado</b><span>Mais de 5 minutos desde `dtemis + hremis`.</span></div>
+            <div class="rule"><b>4. Status manual</b><span>Operação pode marcar: faturar, cancelar, retomar ou aguardando cliente.</span></div>
+            <div class="rule"><b>5. Anti-spam</b><span>Não repetir alerta do mesmo pedido antes de 60 minutos.</span></div>
+          </div>
+        </div>
+
+        <div class="panel">
+          <div class="panel-head">
+            <div>
+              <h2>Histórico de alertas</h2>
+              <p>Últimos eventos simulados.</p>
+            </div>
+          </div>
+          <div class="timeline">
+            <div class="event"><div class="dot">!</div><div><b>#112068 alertado no WhatsApp</b><span>09:11 • passou de 5 min sem faturar/cancelar.</span></div></div>
+            <div class="event"><div class="dot">↻</div><div><b>Feed consultado</b><span>09:14 • 9 orçamentos encontrados.</span></div></div>
+            <div class="event"><div class="dot">✓</div><div><b>#112066 resolvido</b><span>09:02 • NF-e detectada, removido da fila.</span></div></div>
+            <div class="event"><div class="dot">?</div><div><b>Responsável pendente</b><span>V1 usa alerta centralizado; vendedor individual depende de campo/regra confiável.</span></div></div>
+          </div>
+        </div>
+      </aside>
+    </section>
+
+    <div class="footer">
+      <span>Mock visual • Zeno SS / H-TALKS • SLA piloto 5 minutos</span>
+      <span>Big Head — Assistente Digital do H-TALKS • HEADS Tecnologia</span>
+    </div>
+  </main>
+</body>
+</html>
