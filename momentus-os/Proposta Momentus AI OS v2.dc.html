@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth;background:#0a0f1e}
+  body{margin:0;background:#0a0f1e;color:#f2f5fa;font-family:"IBM Plex Sans",system-ui,sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased}
+  h1,h2,h3,h4,p,ul,ol,dl{margin:0}
+  a{color:#4aa3e8;text-decoration:none}
+  a:hover{color:#7cc0f2}
+  ::selection{background:#125b98;color:#fff}
+  :focus-visible{outline:2px solid #4aa3e8;outline-offset:3px}
+  @keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+  @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+  @media print{@page{size:A4;margin:12mm}[data-noprint]{display:none!important}[data-reveal]{opacity:1!important;transform:none!important}*{-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important}}
+</style>
+</helmet>
+
+<a href="#conteudo" data-noprint="1" style="position:fixed;top:8px;left:8px;z-index:60;transform:translateY(-200%);background:#125b98;color:#fff;font:600 12px/1 Sora,sans-serif;letter-spacing:.1em;text-transform:uppercase;padding:12px 16px;border-radius:8px" style-focus="transform:none">Ir para o conteúdo</a>
+
+<div data-progress="1" data-noprint="1" aria-hidden="true" style="position:fixed;top:0;left:0;height:3px;width:0%;background:#4aa3e8;z-index:50;transition:width .12s linear"></div>
+
+<header data-noprint="1" style="position:sticky;top:0;z-index:40;background:rgba(10,15,30,.88);backdrop-filter:blur(14px);border-bottom:1px solid #1e2a44">
+  <div style="width:min(1200px,calc(100% - 48px));margin:0 auto;min-height:72px;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;padding:12px 0">
+    <a href="#topo" style="display:flex;align-items:center;gap:16px;color:#f2f5fa">
+      <img src="assets/htalks-light.png" alt="H-TALKS" style="height:30px;width:auto;display:block">
+      <span aria-hidden="true" style="width:1px;height:26px;background:#1e2a44"></span>
+      <span style="font:700 13px/1.3 Sora,sans-serif;letter-spacing:.12em;text-transform:uppercase;color:#9aa8bf">Momentus OS</span>
+    </a>
+    <nav aria-label="Seções da proposta" style="display:flex;align-items:center;gap:4px;flex-wrap:wrap">
+      <a data-navlink="visao" href="#visao" style="font:500 12px/1 Sora,sans-serif;letter-spacing:.06em;color:#9aa8bf;padding:10px 11px;border-radius:6px" style-hover="color:#fff;background:#16203a">Visão</a>
+      <a data-navlink="onda-1" href="#onda-1" style="font:500 12px/1 Sora,sans-serif;letter-spacing:.06em;color:#9aa8bf;padding:10px 11px;border-radius:6px" style-hover="color:#fff;background:#16203a">Onda 1</a>
+      <a data-navlink="arquitetura" href="#arquitetura" style="font:500 12px/1 Sora,sans-serif;letter-spacing:.06em;color:#9aa8bf;padding:10px 11px;border-radius:6px" style-hover="color:#fff;background:#16203a">Arquitetura</a>
+      <a data-navlink="governanca" href="#governanca" style="font:500 12px/1 Sora,sans-serif;letter-spacing:.06em;color:#9aa8bf;padding:10px 11px;border-radius:6px" style-hover="color:#fff;background:#16203a">Governança</a>
+      <a data-navlink="escopo" href="#escopo" style="font:500 12px/1 Sora,sans-serif;letter-spacing:.06em;color:#9aa8bf;padding:10px 11px;border-radius:6px" style-hover="color:#fff;background:#16203a">Escopo</a>
+      <a data-navlink="investimento" href="#investimento" style="font:500 12px/1 Sora,sans-serif;letter-spacing:.06em;color:#9aa8bf;padding:10px 11px;border-radius:6px" style-hover="color:#fff;background:#16203a">Investimento</a>
+      <a href="#proximo-passo" style="margin-left:8px;background:#125b98;color:#fff;font:600 12px/1 Sora,sans-serif;letter-spacing:.08em;padding:14px 18px;min-height:44px;border-radius:8px;display:flex;align-items:center" style-hover="background:#1a74bd">Próximo passo</a>
+    </nav>
+  </div>
+</header>
+
+<main id="topo">
+  <section id="conteudo" aria-labelledby="hero-title" style="padding:clamp(56px,7vw,96px) 0 clamp(48px,6vw,80px);border-bottom:1px solid #1e2a44">
+    <div style="width:min(1200px,calc(100% - 48px));margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(32px,5vw,64px);align-items:center">
+      <div data-reveal="1">
+        <p style="display:inline-flex;align-items:center;gap:10px;font:600 11px/1 Sora,sans-serif;letter-spacing:.18em;text-transform:uppercase;color:#4aa3e8;border:1px solid #1e2a44;background:#111a2e;padding:9px 14px;border-radius:100px">
+          <span aria-hidden="true" style="width:7px;height:7px;border-radius:50%;background:#4aa3e8"></span>Sistema de contexto e decisão · proposta executiva
+        </p>
+        <h1 id="hero-title" style="font:800 clamp(44px,6.4vw,86px)/1 Sora,sans-serif;letter-spacing:-.04em;margin:26px 0 20px;text-wrap:balance">Momentus OS</h1>
+        <p style="font:600 clamp(19px,2.4vw,30px)/1.25 Sora,sans-serif;letter-spacing:-.02em;color:#eb5c22;max-width:640px;margin-bottom:22px;text-wrap:balance">Um sistema operacional corporativo. Primeira ativação no e-commerce.</p>
+        <p style="max-width:600px;font-size:clamp(16px,1.4vw,19px);color:#9aa8bf;text-wrap:pretty">Uma camada de inteligência que acumula contexto, padroniza rotinas e apoia decisões entre áreas — implantada por ondas, com governança desde a fundação.</p>
+        <div style="display:flex;flex-wrap:wrap;gap:12px;margin-top:34px">
+          <a href="#proximo-passo" style="background:#125b98;color:#fff;font:600 13px/1 Sora,sans-serif;letter-spacing:.08em;padding:19px 28px;min-height:52px;border-radius:10px;display:flex;align-items:center" style-hover="background:#1a74bd">Aprovar a fundação</a>
+          <a href="#investimento" style="border:1px solid #2a3a5c;color:#f2f5fa;font:600 13px/1 Sora,sans-serif;letter-spacing:.08em;padding:18px 26px;min-height:52px;border-radius:10px;display:flex;align-items:center" style-hover="background:#16203a;border-color:#4aa3e8">Ver investimento</a>
+        </div>
+      </div>
+      <figure data-reveal="1" style="margin:0;background:#fff;border-radius:16px;padding:clamp(30px,4vw,48px);display:flex;flex-direction:column;align-items:center;gap:24px">
+        <img src="assets/momentus-color.png" alt="Momentus Fashion Company" style="width:min(100%,340px);height:auto;display:block">
+        <figcaption style="font:600 10px/1.6 Sora,sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#5b6577;text-align:center">Proposta preparada para<br>Momentus Fashion Company</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section aria-label="Indicadores da proposta" style="padding:clamp(30px,4vw,44px) 0;border-bottom:1px solid #1e2a44;background:#0d1426">
+    <dl data-reveal="1" style="width:min(1200px,calc(100% - 48px));margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:clamp(20px,3vw,40px)">
+      <div style="display:grid;gap:6px">
+        <dt style="font:600 10px/1 Sora,sans-serif;letter-spacing:.18em;text-transform:uppercase;color:#7f8ca3">Modo da V1</dt>
+        <dd style="margin:0;font:700 20px/1.25 Sora,sans-serif">Consultiva e read-only</dd>
+      </div>
+      <div style="display:grid;gap:6px">
+        <dt style="font:600 10px/1 Sora,sans-serif;letter-spacing:.18em;text-transform:uppercase;color:#7f8ca3">Primeira frente</dt>
+        <dd style="margin:0;font:700 20px/1.25 Sora,sans-serif">E-commerce e marketplaces</dd>
+      </div>
+    </dl>
+  </section>
+
+  <section id="visao" aria-labelledby="t-visao" style="padding:clamp(64px,8vw,100px) 0;border-bottom:1px solid #1e2a44">
+    <div style="width:min(1200px,calc(100% - 48px));margin:0 auto">
+      <header data-reveal="1" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(28px,5vw,64px);align-items:end;margin-bottom:clamp(36px,5vw,56px)">
+        <div>
+          <p style="display:flex;align-items:center;gap:12px;font:600 11px/1 Sora,sans-serif;letter-spacing:.18em;text-transform:uppercase;color:#4aa3e8"><span aria-hidden="true" style="width:28px;height:2px;background:currentColor"></span>01 · A visão</p>
+          <h2 id="t-visao" style="font:700 clamp(30px,3.8vw,50px)/1.08 Sora,sans-serif;letter-spacing:-.03em;margin-top:18px;text-wrap:balance">Uma inteligência que atravessa a empresa.</h2>
+        </div>
+        <p style="font-size:16px;color:#9aa8bf;max-width:52ch;text-wrap:pretty">O Momentus OS não nasce como ferramenta isolada de um setor. Ele é uma camada operacional corporativa, desenhada para acumular contexto, padronizar rotinas e apoiar decisões entre áreas.</p>
+      </header>
+      <p data-reveal="1" style="font:600 clamp(22px,2.9vw,38px)/1.25 Sora,sans-serif;letter-spacing:-.02em;max-width:900px;margin-bottom:clamp(36px,5vw,52px);text-wrap:balance">A operação deixa de depender de <em style="color:#4aa3e8;font-style:normal">informação dispersa</em> e passa a trabalhar sobre um contexto vivo, confiável e rastreável.</p>
+      <div data-reveal="1" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px">
+        <article style="background:#111a2e;border:1px solid #1e2a44;border-radius:14px;padding:28px 24px">
+          <p style="font:700 13px/1 Sora,sans-serif;letter-spacing:.14em;color:#4aa3e8">01</p>
+          <h3 style="font:600 19px/1.3 Sora,sans-serif;margin:16px 0 10px">Dados conectados</h3>
+          <p style="font-size:14px;color:#9aa8bf">Fontes homologadas alimentam uma base comum sem substituir os sistemas atuais.</p>
+        </article>
+        <article style="background:#111a2e;border:1px solid #1e2a44;border-radius:14px;padding:28px 24px">
+          <p style="font:700 13px/1 Sora,sans-serif;letter-spacing:.14em;color:#4aa3e8">02</p>
+          <h3 style="font:600 19px/1.3 Sora,sans-serif;margin:16px 0 10px">Memória operacional</h3>
+          <p style="font-size:14px;color:#9aa8bf">Critérios, decisões, exceções e aprendizados permanecem disponíveis.</p>
+        </article>
+        <article style="background:#111a2e;border:1px solid #1e2a44;border-radius:14px;padding:28px 24px">
+          <p style="font:700 13px/1 Sora,sans-serif;letter-spacing:.14em;color:#4aa3e8">03</p>
+          <h3 style="font:600 19px/1.3 Sora,sans-serif;margin:16px 0 10px">Rotinas inteligentes</h3>
+          <p style="font-size:14px;color:#9aa8bf">Briefings, análises e consultas chegam no ritmo real da gestão.</p>
+        </article>
+        <article style="background:#111a2e;border:1px solid #1e2a44;border-radius:14px;padding:28px 24px">
+          <p style="font:700 13px/1 Sora,sans-serif;letter-spacing:.14em;color:#4aa3e8">04</p>
+          <h3 style="font:600 19px/1.3 Sora,sans-serif;margin:16px 0 10px">Expansão por ondas</h3>
+          <p style="font-size:14px;color:#9aa8bf">A fundação corporativa cresce por prioridade, com governança e valor comprovado.</p>
+        </article>
+      </div>
+
+      <div data-reveal="1" style="margin-top:clamp(40px,5vw,64px);display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:clamp(28px,4vw,48px);align-items:start">
+        <div>
+          <p style="display:flex;align-items:center;gap:12px;font:600 11px/1 Sora,sans-serif;letter-spacing:.18em;text-transform:uppercase;color:#4aa3e8"><span aria-hidden="true" style="width:28px;height:2px;background:currentColor"></span>Arquitetura agêntica</p>
+          <p style="margin:20px 0 0;font-size:17px;line-height:1.6;color:#c3cddd;text-wrap:pretty">Nosso objetivo é estruturar uma arquitetura agêntica para a empresa: um conjunto de agentes especializados por área e processo, conectados a um <strong style="color:#f2f5fa;font-weight:600">segundo cérebro corporativo</strong> que organiza conhecimento, decisões e regras operacionais.</p>
+          <p style="margin:16px 0 0;font-size:17px;line-height:1.6;color:#9aa8bf;text-wrap:pretty">Em vez de automações desconectadas, criamos uma base escalável para que a IA apoie a operação comercial, o atendimento, a implantação e a gestão — com rastreabilidade, permissões e aprovação humana nos pontos críticos.</p>
+        </div>
+
+        <ol aria-label="Camadas da arquitetura" style="list-style:none;padding:0;margin:0;display:grid;gap:0">
+          <li style="display:grid;gap:0">
+            <div style="border:1px solid #2a6ea8;border-radius:14px;background:#12213a;padding:18px 22px">
+              <p style="font:600 16px/1.3 Sora,sans-serif;margin:0;color:#f2f5fa">Segundo cérebro corporativo</p>
+            </div>
+            <span aria-hidden="true" style="justify-self:center;width:1px;height:18px;background:linear-gradient(#2a6ea8,#4aa3e8)"></span>
+          </li>
+          <li style="display:grid;gap:0">
+            <div style="border:1px solid #1e2a44;border-radius:14px;background:#111a2e;padding:18px 22px">
+              <p style="font:600 15px/1.35 Sora,sans-serif;margin:0">Regras, playbooks, permissões e contexto</p>
+            </div>
+            <span aria-hidden="true" style="justify-self:center;width:1px;height:18px;background:#2a3a5c"></span>
+          </li>
+          <li style="display:grid;gap:0">
+            <div style="border:1px solid #1e2a44;border-radius:14px;background:#111a2e;padding:18px 22px">
+              <p style="font:600 15px/1.35 Sora,sans-serif;margin:0">Agentes especializados por setor</p>
+            </div>
+            <span aria-hidden="true" style="justify-self:center;width:1px;height:18px;background:#2a3a5c"></span>
+          </li>
+          <li style="display:grid;gap:0">
+            <div style="border:1px solid #1e2a44;border-radius:14px;background:#111a2e;padding:18px 22px">
+              <p style="font:600 15px/1.35 Sora,sans-serif;margin:0">Sistemas e canais da empresa</p>
+            </div>
+            <span aria-hidden="true" style="justify-self:center;width:1px;height:18px;background:#2a3a5c"></span>
+          </li>
+          <li>
+            <div style="border:1px solid #3a4a6b;border-radius:14px;background:#0d1426;padding:18px 22px">
+              <p style="font:600 15px/1.35 Sora,sans-serif;margin:0">Aprovação humana e indicadores</p>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <section id="onda-1" aria-labelledby="t-onda" style="padding:clamp(64px,8vw,100px) 0;border-bottom:1px solid #1e2a44;background:#0d1426">
+    <div style="width:min(1200px,calc(100% - 48px));margin:0 auto">
+      <header data-reveal="1" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(28px,5vw,64px);align-items:end;margin-bottom:clamp(36px,5vw,56px)">
+        <div>
+          <p style="display:flex;align-items:center;gap:12px;font:600 11px/1 Sora,sans-serif;letter-spacing:.18em;text-transform:uppercase;color:#eb5c22"><span aria-hidden="true" style="width:28px;height:2px;background:currentColor"></span>02 · Onda 1 · E-commerce</p>
+          <h2 id="t-onda" style="font:700 clamp(30px,3.8vw,50px)/1.08 Sora,sans-serif;letter-spacing:-.03em;margin-top:18px;text-wrap:balance">Começar onde o sinal é mais rápido.</h2>
+        </div>
+        <p style="font-size:16px;color:#9aa8bf;max-width:52ch;text-wrap:pretty">A primeira frente é e-commerce e marketplaces: problemas concretos, dados frequentes e uma rotina executiva mensurável — sem reduzir o produto a esse setor.</p>
+      </header>
+      <div data-reveal="1" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px">
+        <article style="background:#111a2e;border:1px solid #3a2318;border-top:3px solid #eb5c22;border-radius:14px;padding:clamp(28px,3.5vw,40px)">
+          <p style="font:600 10px/1 Sora,sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#eb5c22">Agora · Onda 1</p>
+          <h3 style="font:700 clamp(22px,2.4vw,30px)/1.2 Sora,sans-serif;margin:16px 0 14px">E-commerce como primeira ativação</h3>
+          <p style="color:#9aa8bf;font-size:15px;text-wrap:pretty">Mapear fontes, perguntas de gestão, recorrências e critérios de decisão. A V1 será consultiva, read-only e independente do projeto H-TALKS em produção.</p>
+          <ul style="list-style:none;padding:0;display:flex;flex-wrap:wrap;gap:8px;margin-top:24px">
+            <li style="border:1px solid #4a2c1c;background:#160f0b;color:#f0c3ae;padding:8px 13px;border-radius:100px;font-size:12px">Vendas</li>
+            <li style="border:1px solid #4a2c1c;background:#160f0b;color:#f0c3ae;padding:8px 13px;border-radius:100px;font-size:12px">Estoque</li>
+            <li style="border:1px solid #4a2c1c;background:#160f0b;color:#f0c3ae;padding:8px 13px;border-radius:100px;font-size:12px">Campanhas</li>
+            <li style="border:1px solid #4a2c1c;background:#160f0b;color:#f0c3ae;padding:8px 13px;border-radius:100px;font-size:12px">Marketplaces</li>
+          </ul>
+        </article>
+        <article style="background:#111a2e;border:1px solid #1e2a44;border-top:3px solid #125b98;border-radius:14px;padding:clamp(28px,3.5vw,40px)">
+          <p style="font:600 10px/1 Sora,sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#4aa3e8">Depois · expansão por ondas</p>
+          <h3 style="font:700 clamp(22px,2.4vw,30px)/1.2 Sora,sans-serif;margin:16px 0 14px">Uma fundação, novas áreas</h3>
+          <p style="color:#9aa8bf;font-size:15px;text-wrap:pretty">Após homologação, o mesmo núcleo pode receber novos contextos e rotinas conforme a prioridade da Momentus.</p>
+          <ul style="list-style:none;padding:0;display:flex;flex-wrap:wrap;gap:8px;margin-top:24px">
+            <li style="border:1px solid #23385a;background:#0e1729;color:#a9c8e6;padding:8px 13px;border-radius:100px;font-size:12px">Financeiro</li>
+            <li style="border:1px solid #23385a;background:#0e1729;color:#a9c8e6;padding:8px 13px;border-radius:100px;font-size:12px">Produção</li>
+            <li style="border:1px solid #23385a;background:#0e1729;color:#a9c8e6;padding:8px 13px;border-radius:100px;font-size:12px">Operações</li>
+            <li style="border:1px solid #23385a;background:#0e1729;color:#a9c8e6;padding:8px 13px;border-radius:100px;font-size:12px">Diretoria</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="cadencia" aria-labelledby="t-cadencia" style="padding:clamp(64px,8vw,100px) 0;border-bottom:1px solid #1e2a44">
+    <div style="width:min(1200px,calc(100% - 48px));margin:0 auto">
+      <header data-reveal="1" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(28px,5vw,64px);align-items:end;margin-bottom:clamp(36px,5vw,56px)">
+        <div>
+          <p style="display:flex;align-items:center;gap:12px;font:600 11px/1 Sora,sans-serif;letter-spacing:.18em;text-transform:uppercase;color:#4aa3e8"><span aria-hidden="true" style="width:28px;height:2px;background:currentColor"></span>03 · Cadência executiva</p>
+          <h2 id="t-cadencia" style="font:700 clamp(30px,3.8vw,50px)/1.08 Sora,sans-serif;letter-spacing:-.03em;margin-top:18px;text-wrap:balance">Informação no ritmo da decisão.</h2>
+        </div>
+        <p style="font-size:16px;color:#9aa8bf;max-width:52ch;text-wrap:pretty">Conteúdo, fontes e critérios finais serão definidos com o responsável da Onda 1.</p>
+      </header>
+      <div data-reveal="1" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px">
+        <article style="background:#111a2e;border:1px solid #1e2a44;border-radius:14px;padding:28px 24px">
+          <p style="font:700 13px/1 Sora,sans-serif;letter-spacing:.14em;color:#4aa3e8">01</p>
+          <h3 style="font:600 18px/1.3 Sora,sans-serif;margin:14px 0 8px">Briefing executivo diário</h3>
+          <p style="font-size:14px;color:#9aa8bf">Sinais, desvios e pontos que pedem leitura humana.</p>
+        </article>
+        <article style="background:#111a2e;border:1px solid #1e2a44;border-radius:14px;padding:28px 24px">
+          <p style="font:700 13px/1 Sora,sans-serif;letter-spacing:.14em;color:#4aa3e8">02</p>
+          <h3 style="font:600 18px/1.3 Sora,sans-serif;margin:14px 0 8px">Relatório analítico semanal</h3>
+          <p style="font-size:14px;color:#9aa8bf">Movimentos, hipóteses e decisões registradas.</p>
+        </article>
+        <article style="background:#111a2e;border:1px solid #1e2a44;border-radius:14px;padding:28px 24px">
+          <p style="font:700 13px/1 Sora,sans-serif;letter-spacing:.14em;color:#4aa3e8">03</p>
+          <h3 style="font:600 18px/1.3 Sora,sans-serif;margin:14px 0 8px">Consultas do gestor</h3>
+          <p style="font-size:14px;color:#9aa8bf">Perguntas sobre o contexto homologado, sempre com fontes.</p>
+        </article>
+        <article style="background:#111a2e;border:1px solid #1e2a44;border-radius:14px;padding:28px 24px">
+          <p style="font:700 13px/1 Sora,sans-serif;letter-spacing:.14em;color:#4aa3e8">04</p>
+          <h3 style="font:600 18px/1.3 Sora,sans-serif;margin:14px 0 8px">Rotina assistida</h3>
+          <p style="font-size:14px;color:#9aa8bf">Um fluxo recorrente sob aprovação humana.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="arquitetura" aria-labelledby="t-arq" style="padding:clamp(64px,8vw,100px) 0;border-bottom:1px solid #1e2a44;background:#0d1426">
+    <div style="width:min(1200px,calc(100% - 48px));margin:0 auto">
+      <header data-reveal="1" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(28px,5vw,64px);align-items:end;margin-bottom:clamp(36px,5vw,56px)">
+        <div>
+          <p style="display:flex;align-items:center;gap:12px;font:600 11px/1 Sora,sans-serif;letter-spacing:.18em;text-transform:uppercase;color:#4aa3e8"><span aria-hidden="true" style="width:28px;height:2px;background:currentColor"></span>04 · Arquitetura</p>
+          <h2 id="t-arq" style="font:700 clamp(30px,3.8vw,50px)/1.08 Sora,sans-serif;letter-spacing:-.03em;margin-top:18px;text-wrap:balance">Da operação à decisão.</h2>
+        </div>
+        <p style="font-size:16px;color:#9aa8bf;max-width:52ch;text-wrap:pretty">Uma arquitetura desacoplada preserva independência de fornecedor e de modelo. Cada conexão depende de disponibilidade e homologação técnica.</p>
+      </header>
+      <ol data-reveal="1" style="list-style:none;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px">
+        <li style="background:#111a2e;border:1px solid #1e2a44;border-radius:14px;padding:24px 22px;display:grid;gap:10px;align-content:start">
+          <span style="font:600 10px/1 Sora,sans-serif;letter-spacing:.16em;text-transform:uppercase;color:#4aa3e8">01 · Entrada</span>
+          <strong style="font:700 20px/1.2 Sora,sans-serif">Fontes homologadas</strong>
+          <span style="font-size:13px;color:#9aa8bf">APIs · arquivos · eventos</span>
+        </li>
+        <li style="background:#111a2e;border:1px solid #1e2a44;border-radius:14px;padding:24px 22px;display:grid;gap:10px;align-content:start">
+          <span style="font:600 10px/1 Sora,sans-serif;letter-spacing:.16em;text-transform:uppercase;color:#4aa3e8">02 · Conexão</span>
+          <strong style="font:700 20px/1.2 Sora,sans-serif">Integração e qualidade</strong>
+          <span style="font-size:13px;color:#9aa8bf">validação · normalização</span>
+        </li>
+        <li style="background:#125b98;border:1px solid #125b98;border-radius:14px;padding:24px 22px;display:grid;gap:10px;align-content:start">
+          <span style="font:600 10px/1 Sora,sans-serif;letter-spacing:.16em;text-transform:uppercase;color:#bfe0fa">03 · Núcleo do OS</span>
+          <strong style="font:700 20px/1.2 Sora,sans-serif;color:#fff">Memória e contexto</strong>
+          <span style="font-size:13px;color:#dbecf9">critérios · histórico · decisões</span>
+        </li>
+        <li style="background:#111a2e;border:1px solid #1e2a44;border-radius:14px;padding:24px 22px;display:grid;gap:10px;align-content:start">
+          <span style="font:600 10px/1 Sora,sans-serif;letter-spacing:.16em;text-transform:uppercase;color:#4aa3e8">04 · Rotinas</span>
+          <strong style="font:700 20px/1.2 Sora,sans-serif">Análises e briefings</strong>
+          <span style="font-size:13px;color:#9aa8bf">agenda · consultas · alertas</span>
+        </li>
+        <li style="background:#111a2e;border:1px solid #1e2a44;border-radius:14px;padding:24px 22px;display:grid;gap:10px;align-content:start">
+          <span style="font:600 10px/1 Sora,sans-serif;letter-spacing:.16em;text-transform:uppercase;color:#4aa3e8">05 · Decisão</span>
+          <strong style="font:700 20px/1.2 Sora,sans-serif">Gestão com aprovação humana</strong>
+          <span style="font-size:13px;color:#9aa8bf">recomendação · aceite · registro</span>
+        </li>
+      </ol>
+      <p style="margin-top:20px;color:#7f8ca3;font-size:13px">Fluxo em cinco camadas, da entrada de dados até a decisão registrada.</p>
+    </div>
+  </section>
+
+  <section id="governanca" aria-labelledby="t-gov" style="padding:clamp(64px,8vw,100px) 0;border-bottom:1px solid #1e2a44">
+    <div style="width:min(1200px,calc(100% - 48px));margin:0 auto">
+      <header data-reveal="1" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(28px,5vw,64px);align-items:end;margin-bottom:clamp(36px,5vw,56px)">
+        <div>
+          <p style="display:flex;align-items:center;gap:12px;font:600 11px/1 Sora,sans-serif;letter-spacing:.18em;text-transform:uppercase;color:#4aa3e8"><span aria-hidden="true" style="width:28px;height:2px;background:currentColor"></span>05 · Governança</p>
+          <h2 id="t-gov" style="font:700 clamp(30px,3.8vw,50px)/1.08 Sora,sans-serif;letter-spacing:-.03em;margin-top:18px;text-wrap:balance">Inteligência com limites visíveis.</h2>
+        </div>
+        <p style="font-size:16px;color:#9aa8bf;max-width:52ch;text-wrap:pretty">Confiança vem de acesso mínimo, rastreabilidade e decisão humana nos pontos de impacto.</p>
+      </header>
+      <div data-reveal="1" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:clamp(28px,4vw,56px);align-items:start">
+        <p style="font:700 clamp(24px,3vw,40px)/1.2 Sora,sans-serif;letter-spacing:-.02em;color:#4aa3e8;text-wrap:balance">Nenhuma ação em preço, estoque, pedido ou campanha sem aprovação humana.</p>
+        <ul style="list-style:none;padding:0;display:grid;gap:12px">
+          <li style="background:#111a2e;border:1px solid #1e2a44;border-radius:12px;padding:18px 20px;display:grid;gap:4px"><strong style="font:600 16px Sora,sans-serif">Operação read-only na Onda 1</strong><span style="color:#9aa8bf;font-size:14px">Leitura e recomendação como padrão inicial.</span></li>
+          <li style="background:#111a2e;border:1px solid #1e2a44;border-radius:12px;padding:18px 20px;display:grid;gap:4px"><strong style="font:600 16px Sora,sans-serif">Segregação de acesso</strong><span style="color:#9aa8bf;font-size:14px">Permissões limitadas à necessidade de cada fonte.</span></li>
+          <li style="background:#111a2e;border:1px solid #1e2a44;border-radius:12px;padding:18px 20px;display:grid;gap:4px"><strong style="font:600 16px Sora,sans-serif">Logs e rastreabilidade</strong><span style="color:#9aa8bf;font-size:14px">Registro das rotinas, consultas e eventos relevantes.</span></li>
+          <li style="background:#111a2e;border:1px solid #1e2a44;border-radius:12px;padding:18px 20px;display:grid;gap:4px"><strong style="font:600 16px Sora,sans-serif">Cofre de credenciais</strong><span style="color:#9aa8bf;font-size:14px">Segredos fora de código e do conteúdo operacional.</span></li>
+          <li style="background:#111a2e;border:1px solid #1e2a44;border-radius:12px;padding:18px 20px;display:grid;gap:4px"><strong style="font:600 16px Sora,sans-serif">Human-in-the-loop</strong><span style="color:#9aa8bf;font-size:14px">A aprovação humana permanece nos pontos de efeito.</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="metodo" aria-labelledby="t-metodo" style="padding:clamp(64px,8vw,100px) 0;border-bottom:1px solid #1e2a44;background:#0d1426">
+    <div style="width:min(1200px,calc(100% - 48px));margin:0 auto">
+      <header data-reveal="1" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(28px,5vw,64px);align-items:end;margin-bottom:clamp(36px,5vw,56px)">
+        <div>
+          <p style="display:flex;align-items:center;gap:12px;font:600 11px/1 Sora,sans-serif;letter-spacing:.18em;text-transform:uppercase;color:#4aa3e8"><span aria-hidden="true" style="width:28px;height:2px;background:currentColor"></span>06 · Jornada de implantação</p>
+          <h2 id="t-metodo" style="font:700 clamp(30px,3.8vw,50px)/1.08 Sora,sans-serif;letter-spacing:-.03em;margin-top:18px;text-wrap:balance">Fundação geral. Entrega por ondas.</h2>
+        </div>
+        <p style="font-size:16px;color:#9aa8bf;max-width:52ch;text-wrap:pretty">A sequência reduz premissas e transforma conhecimento tácito em uma base operacional documentada.</p>
+      </header>
+      <ol data-reveal="1" style="list-style:none;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(165px,1fr));gap:20px">
+        <li style="display:grid;gap:8px;border-top:2px solid #125b98;padding-top:16px"><span style="font:600 11px/1 Sora,sans-serif;letter-spacing:.16em;color:#4aa3e8">FASE 01</span><b style="font:700 18px Sora,sans-serif">Kickoff</b><span style="font-size:13px;color:#9aa8bf">responsável e objetivo</span></li>
+        <li style="display:grid;gap:8px;border-top:2px solid #125b98;padding-top:16px"><span style="font:600 11px/1 Sora,sans-serif;letter-spacing:.16em;color:#4aa3e8">FASE 02</span><b style="font:700 18px Sora,sans-serif">Discovery</b><span style="font-size:13px;color:#9aa8bf">fontes, acessos e baseline</span></li>
+        <li style="display:grid;gap:8px;border-top:2px solid #125b98;padding-top:16px"><span style="font:600 11px/1 Sora,sans-serif;letter-spacing:.16em;color:#4aa3e8">FASE 03</span><b style="font:700 18px Sora,sans-serif">Desenho</b><span style="font-size:13px;color:#9aa8bf">arquitetura corporativa</span></li>
+        <li style="display:grid;gap:8px;border-top:2px solid #125b98;padding-top:16px"><span style="font:600 11px/1 Sora,sans-serif;letter-spacing:.16em;color:#4aa3e8">FASE 04</span><b style="font:700 18px Sora,sans-serif">Construção</b><span style="font-size:13px;color:#9aa8bf">núcleo e Onda 1</span></li>
+        <li style="display:grid;gap:8px;border-top:2px solid #125b98;padding-top:16px"><span style="font:600 11px/1 Sora,sans-serif;letter-spacing:.16em;color:#4aa3e8">FASE 05</span><b style="font:700 18px Sora,sans-serif">Homologação</b><span style="font-size:13px;color:#9aa8bf">testes com a gestão</span></li>
+        <li style="display:grid;gap:8px;border-top:2px solid #125b98;padding-top:16px"><span style="font:600 11px/1 Sora,sans-serif;letter-spacing:.16em;color:#4aa3e8">FASE 06</span><b style="font:700 18px Sora,sans-serif">Handoff</b><span style="font-size:13px;color:#9aa8bf">documentação e evolução</span></li>
+      </ol>
+      <p style="margin-top:40px;padding:20px 24px;border-left:3px solid #4aa3e8;background:#111a2e;border-radius:0 12px 12px 0;color:#9aa8bf;font-size:15px;max-width:900px;text-wrap:pretty">O cronograma executivo será confirmado após validar acessos, qualidade dos dados, dependências e baseline. Não há prazo global fixado antes dessa confirmação.</p>
+    </div>
+  </section>
+
+  <section id="escopo" aria-labelledby="t-escopo" style="padding:clamp(64px,8vw,100px) 0;border-bottom:1px solid #1e2a44">
+    <div style="width:min(1200px,calc(100% - 48px));margin:0 auto">
+      <header data-reveal="1" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(28px,5vw,64px);align-items:end;margin-bottom:clamp(36px,5vw,56px)">
+        <div>
+          <p style="display:flex;align-items:center;gap:12px;font:600 11px/1 Sora,sans-serif;letter-spacing:.18em;text-transform:uppercase;color:#4aa3e8"><span aria-hidden="true" style="width:28px;height:2px;background:currentColor"></span>07 · Escopo protegido</p>
+          <h2 id="t-escopo" style="font:700 clamp(30px,3.8vw,50px)/1.08 Sora,sans-serif;letter-spacing:-.03em;margin-top:18px;text-wrap:balance">Clareza para implantar sem surpresa.</h2>
+        </div>
+        <p style="font-size:16px;color:#9aa8bf;max-width:52ch;text-wrap:pretty">A contratação entrega a fundação do OS e sua primeira ativação no e-commerce. O roadmap corporativo não transforma futuras ondas em compromisso automático.</p>
+      </header>
+      <div data-reveal="1" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:16px">
+        <article style="background:#111a2e;border:1px solid #1e2a44;border-top:3px solid #125b98;border-radius:14px;padding:28px 24px">
+          <p style="font:600 10px/1 Sora,sans-serif;letter-spacing:.18em;text-transform:uppercase;color:#4aa3e8">Incluído</p>
+          <h3 style="font:700 22px/1.2 Sora,sans-serif;margin:12px 0 18px">Nesta contratação</h3>
+          <ul style="list-style:none;padding:0;display:grid">
+            <li style="padding:11px 0;border-top:1px solid #1e2a44;font-size:14px;color:#c3cddd">Discovery e baseline da Onda 1</li>
+            <li style="padding:11px 0;border-top:1px solid #1e2a44;font-size:14px;color:#c3cddd">Arquitetura do núcleo corporativo</li>
+            <li style="padding:11px 0;border-top:1px solid #1e2a44;font-size:14px;color:#c3cddd">V1 consultiva e rotinas definidas</li>
+            <li style="padding:11px 0;border-top:1px solid #1e2a44;font-size:14px;color:#c3cddd">Homologação e documentação</li>
+            <li style="padding:11px 0;border-top:1px solid #1e2a44;font-size:14px;color:#c3cddd">Treinamento do responsável</li>
+          </ul>
+        </article>
+        <article style="background:#111a2e;border:1px solid #1e2a44;border-top:3px solid #4aa3e8;border-radius:14px;padding:28px 24px">
+          <p style="font:600 10px/1 Sora,sans-serif;letter-spacing:.18em;text-transform:uppercase;color:#9aa8bf">Condicionado</p>
+          <h3 style="font:700 22px/1.2 Sora,sans-serif;margin:12px 0 18px">Após validação</h3>
+          <ul style="list-style:none;padding:0;display:grid">
+            <li style="padding:11px 0;border-top:1px solid #1e2a44;font-size:14px;color:#c3cddd">Integrações com acesso disponível</li>
+            <li style="padding:11px 0;border-top:1px solid #1e2a44;font-size:14px;color:#c3cddd">Qualidade dos dados de origem</li>
+            <li style="padding:11px 0;border-top:1px solid #1e2a44;font-size:14px;color:#c3cddd">Permissões técnicas da Momentus</li>
+            <li style="padding:11px 0;border-top:1px solid #1e2a44;font-size:14px;color:#c3cddd">Detalhamento da rotina assistida</li>
+            <li style="padding:11px 0;border-top:1px solid #1e2a44;font-size:14px;color:#c3cddd">Cronograma executivo final</li>
+          </ul>
+        </article>
+        <article style="background:#111a2e;border:1px solid #1e2a44;border-top:3px solid #2a3a5c;border-radius:14px;padding:28px 24px">
+          <p style="font:600 10px/1 Sora,sans-serif;letter-spacing:.18em;text-transform:uppercase;color:#9aa8bf">Roadmap</p>
+          <h3 style="font:700 22px/1.2 Sora,sans-serif;margin:12px 0 18px">Fora desta fase</h3>
+          <ul style="list-style:none;padding:0;display:grid">
+            <li style="padding:11px 0;border-top:1px solid #1e2a44;font-size:14px;color:#c3cddd">Novas ondas e áreas corporativas</li>
+            <li style="padding:11px 0;border-top:1px solid #1e2a44;font-size:14px;color:#c3cddd">Automação autônoma de ações</li>
+            <li style="padding:11px 0;border-top:1px solid #1e2a44;font-size:14px;color:#c3cddd">Integrações de maior porte</li>
+            <li style="padding:11px 0;border-top:1px solid #1e2a44;font-size:14px;color:#c3cddd">SLA 24/7</li>
+            <li style="padding:11px 0;border-top:1px solid #1e2a44;font-size:14px;color:#c3cddd">Reconstruções de arquitetura</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <sc-if value="{{ mostrarInvestimento }}" hint-placeholder-val="{{ true }}">
+  <section id="investimento" aria-labelledby="t-inv" style="padding:clamp(64px,8vw,100px) 0;border-bottom:1px solid #1e2a44;background:#0d1426">
+    <div style="width:min(1200px,calc(100% - 48px));margin:0 auto">
+      <header data-reveal="1" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(28px,5vw,64px);align-items:end;margin-bottom:clamp(36px,5vw,56px)">
+        <div>
+          <p style="display:flex;align-items:center;gap:12px;font:600 11px/1 Sora,sans-serif;letter-spacing:.18em;text-transform:uppercase;color:#4aa3e8"><span aria-hidden="true" style="width:28px;height:2px;background:currentColor"></span>08 · Investimento</p>
+          <h2 id="t-inv" style="font:700 clamp(30px,3.8vw,50px)/1.08 Sora,sans-serif;letter-spacing:-.03em;margin-top:18px;text-wrap:balance">Fundação do Momentus OS + Onda 1.</h2>
+        </div>
+        <p style="font-size:16px;color:#9aa8bf;max-width:52ch;text-wrap:pretty">Diagnóstico, arquitetura, construção e homologação do núcleo corporativo com primeira ativação em e-commerce e marketplaces.</p>
+      </header>
+      <div data-reveal="1" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px">
+        <div style="background:#125b98;border-radius:16px;padding:clamp(30px,4vw,44px)">
+          <p style="font:600 10px/1 Sora,sans-serif;letter-spacing:.18em;text-transform:uppercase;color:#bfe0fa">Implantação única</p>
+          <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin:16px 0 6px">
+            <span style="font:600 22px/1 Sora,sans-serif;color:#8fb8d9;text-decoration:line-through;opacity:.65">R$ 10.000</span>
+            <span style="font:800 14px/1 Sora,sans-serif;letter-spacing:.04em;text-transform:uppercase;background:#eb5c22;color:#fff;padding:9px 18px;border-radius:999px;white-space:nowrap;box-shadow:0 6px 18px rgba(235,92,34,.5)">-20% cliente H-TALKS</span>
+          </div>
+          <p style="font:800 clamp(46px,6vw,76px)/1 Sora,sans-serif;letter-spacing:-.04em;margin:0 0 14px;color:#fff">R$ 8.000</p>
+          <p style="font-size:15px;color:#dbecf9;max-width:44ch;text-wrap:pretty">A condição de pagamento definida no aceite será formalizada no documento de contratação.</p>
+        </div>
+        <div style="background:#111a2e;border:1px solid #1e2a44;border-radius:16px;padding:clamp(30px,4vw,44px);display:flex;flex-direction:column;justify-content:center">
+          <p style="font:600 10px/1 Sora,sans-serif;letter-spacing:.18em;text-transform:uppercase;color:#7f8ca3">Depois da homologação</p>
+          <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin:14px 0 12px">
+            <p style="font:700 clamp(32px,4vw,46px)/1 Sora,sans-serif;margin:0">R$ 998<span style="font-size:.45em;color:#9aa8bf"> /mês</span></p>
+            <span style="font:700 12px/1 Sora,sans-serif;letter-spacing:.04em;text-transform:uppercase;background:#12213a;border:1px solid #2a6ea8;color:#bfe0fa;padding:7px 14px;border-radius:999px;white-space:nowrap">4h/mês inclusas</span>
+          </div>
+          <p style="font-size:15px;color:#9aa8bf;max-width:40ch;text-wrap:pretty">Sustentação da base homologada e evolução incremental priorizada — ajustes de regras, pequenas integrações e correções.</p>
+          <div style="margin-top:16px;padding-top:16px;border-top:1px solid #1e2a44;display:flex;align-items:baseline;justify-content:space-between;gap:12px;max-width:40ch">
+            <span style="font-size:13px;color:#7f8ca3">Hora adicional <span style="color:#5b6577">(pré-aprovação)</span></span>
+            <span style="font:700 16px/1 Sora,sans-serif;color:#f2f5fa;white-space:nowrap">R$ 250<span style="font-size:.7em;color:#7f8ca3;font-weight:400">/h</span></span>
+          </div>
+        </div>
+      </div>
+      <div style="margin-top:20px;background:#111a2e;border:1px solid #1e2a44;border-radius:14px;padding:24px 26px;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px;font-size:14px;color:#9aa8bf">
+        <p style="font:600 11px/1.4 Sora,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#f2f5fa">Custos externos</p>
+        <p style="text-wrap:pretty">Custos de infraestrutura, modelos e consumo de IA, mensageria, licenças e ferramentas de terceiros não integram os valores H-TALKS. Serão dimensionados separadamente e ativados somente mediante aprovação da Momentus.</p>
+      </div>
+    </div>
+  </section>
+  </sc-if>
+
+  <section id="confianca" aria-labelledby="t-conf" style="padding:clamp(64px,8vw,100px) 0;border-bottom:1px solid #1e2a44">
+    <div style="width:min(1200px,calc(100% - 48px));margin:0 auto">
+      <header data-reveal="1" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(28px,5vw,64px);align-items:end;margin-bottom:clamp(32px,4vw,48px)">
+        <div>
+          <p style="display:flex;align-items:center;gap:12px;font:600 11px/1 Sora,sans-serif;letter-spacing:.18em;text-transform:uppercase;color:#4aa3e8"><span aria-hidden="true" style="width:28px;height:2px;background:currentColor"></span>Por que confiar na H-TALKS</p>
+          <h2 id="t-conf" style="font:700 clamp(28px,3.6vw,46px)/1.1 Sora,sans-serif;letter-spacing:-.03em;margin-top:18px;text-wrap:balance">Não somos mais uma empresa de IA que surgiu ontem.</h2>
+        </div>
+        <p style="font-size:16px;color:#9aa8bf;max-width:52ch;text-wrap:pretty">Somos décadas de tecnologia aplicadas a um problema novo.</p>
+      </header>
+
+      <div data-reveal="1" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(28px,4vw,48px);align-items:start">
+        <p style="font-size:17px;line-height:1.6;color:#c3cddd;text-wrap:pretty;margin:0">A H-TALKS nasceu dentro da <strong style="color:#f2f5fa;font-weight:600">Heads</strong>, empresa com décadas de experiência em tecnologia e automação. Isso significa que, por trás de cada agente de IA que colocamos em produção, existe estrutura de verdade: infraestrutura resiliente, segurança levada a sério e uma equipe que já viu tecnologia ir e vir, e sabe o que fica.</p>
+        <ul style="list-style:none;padding:0;margin:0;display:grid;gap:12px">
+          <li style="display:flex;align-items:center;gap:14px;padding:18px 22px;border:1px solid #1e2a44;border-radius:14px;background:#111a2e;font:600 16px/1.3 Sora,sans-serif"><span aria-hidden="true" style="width:8px;height:8px;border-radius:999px;background:#4aa3e8;flex:none"></span>Décadas de mercado</li>
+          <li style="display:flex;align-items:center;gap:14px;padding:18px 22px;border:1px solid #1e2a44;border-radius:14px;background:#111a2e;font:600 16px/1.3 Sora,sans-serif"><span aria-hidden="true" style="width:8px;height:8px;border-radius:999px;background:#4aa3e8;flex:none"></span>Segurança e resiliência</li>
+          <li style="display:flex;align-items:center;gap:14px;padding:18px 22px;border:1px solid #1e2a44;border-radius:14px;background:#111a2e;font:600 16px/1.3 Sora,sans-serif"><span aria-hidden="true" style="width:8px;height:8px;border-radius:999px;background:#4aa3e8;flex:none"></span>Estrutura da Heads por trás</li>
+          <li><a href="https://www.headstecnologia.com.br" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:10px;margin-top:4px;color:#4aa3e8;font:600 14px/1 Sora,sans-serif;letter-spacing:.04em;padding:14px 0" style-hover="color:#7cc0f5">Conhecer a Heads Tecnologia <span aria-hidden="true">→</span></a></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="proximo-passo" aria-labelledby="t-cta" style="padding:clamp(64px,8vw,100px) 0">
+    <div style="width:min(1200px,calc(100% - 48px));margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(32px,5vw,56px);align-items:center">
+      <div data-reveal="1">
+        <p style="display:flex;align-items:center;gap:12px;font:600 11px/1 Sora,sans-serif;letter-spacing:.18em;text-transform:uppercase;color:#4aa3e8"><span aria-hidden="true" style="width:28px;height:2px;background:currentColor"></span>Próximo passo</p>
+        <h2 id="t-cta" style="font:700 clamp(28px,3.6vw,46px)/1.1 Sora,sans-serif;letter-spacing:-.03em;margin-top:18px;text-wrap:balance">Aprovar a fundação e abrir o discovery.</h2>
+        <ol style="list-style:none;padding:0;margin:28px 0 0;display:grid;gap:12px;max-width:560px">
+          <li style="display:flex;gap:14px;align-items:baseline;color:#c3cddd;font-size:16px"><span aria-hidden="true" style="font:700 15px Sora,sans-serif;color:#4aa3e8">01</span>Confirmar o aceite da implantação</li>
+          <li style="display:flex;gap:14px;align-items:baseline;color:#c3cddd;font-size:16px"><span aria-hidden="true" style="font:700 15px Sora,sans-serif;color:#4aa3e8">02</span>Indicar o responsável pela Onda 1</li>
+          <li style="display:flex;gap:14px;align-items:baseline;color:#c3cddd;font-size:16px"><span aria-hidden="true" style="font:700 15px Sora,sans-serif;color:#4aa3e8">03</span>Agendar kickoff e discovery técnico</li>
+        </ol>
+        <div style="display:flex;flex-wrap:wrap;gap:12px;margin-top:32px">
+          <a href="https://wa.me/5547991053840?text=Ol%C3%A1!%20Sobre%20a%20proposta%20do%20Momentus%20AI%20OS%20-%20Onda%201." style="background:#125b98;color:#fff;font:600 13px/1 Sora,sans-serif;letter-spacing:.08em;padding:19px 28px;min-height:52px;border-radius:10px;display:flex;align-items:center" style-hover="background:#1a74bd">Falar com a H-TALKS</a>
+          <a href="#topo" style="border:1px solid #2a3a5c;color:#f2f5fa;font:600 13px/1 Sora,sans-serif;letter-spacing:.08em;padding:18px 26px;min-height:52px;border-radius:10px;display:flex;align-items:center" style-hover="background:#16203a;border-color:#4aa3e8">Rever a proposta</a>
+        </div>
+      </div>
+      <aside data-reveal="1" style="background:#111a2e;border:1px solid #1e2a44;border-radius:16px;padding:clamp(28px,3.5vw,40px);display:grid;gap:18px">
+        <img src="assets/htalks-light.png" alt="H-TALKS" style="height:32px;width:auto;display:block">
+        <p style="font:600 18px/1.4 Sora,sans-serif;text-wrap:pretty">Décadas de tecnologia da Heads, aplicadas a IA em produção.</p>
+        <p style="font-size:14px;color:#9aa8bf;text-wrap:pretty">Diagnóstico, arquitetura e agentes em operação — com governança, observabilidade e suporte contínuo.</p>
+        <dl style="display:grid;gap:10px;font-size:13px;color:#9aa8bf;margin:0">
+          <div style="display:flex;gap:8px"><dt style="color:#7f8ca3">WhatsApp</dt><dd style="margin:0;color:#f2f5fa">(47) 99105-3840</dd></div>
+          <div style="display:flex;gap:8px"><dt style="color:#7f8ca3">Base</dt><dd style="margin:0;color:#f2f5fa">Brusque · SC</dd></div>
+        </dl>
+      </aside>
+    </div>
+  </section>
+</main>
+
+<section aria-label="Identificação da proposta" style="padding:clamp(36px,5vw,52px) 0;border-top:1px solid #1e2a44;background:#0d1426">
+  <dl data-reveal="1" style="width:min(1200px,calc(100% - 48px));margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:24px">
+    <div style="display:flex;flex-direction:column;gap:14px">
+      <dt style="font:600 10px/1 Sora,sans-serif;letter-spacing:.18em;text-transform:uppercase;color:#7f8ca3">Preparado para</dt>
+      <dd style="margin:0"><span style="background:#fff;border-radius:10px;padding:12px 16px;display:inline-flex"><img src="assets/momentus-color.png" alt="Momentus Fashion Company" style="height:34px;width:auto;display:block"></span></dd>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:14px">
+      <dt style="font:600 10px/1 Sora,sans-serif;letter-spacing:.18em;text-transform:uppercase;color:#7f8ca3">Elaborado por</dt>
+      <dd style="margin:0;display:flex;align-items:center;height:58px"><img src="assets/htalks-light.png" alt="H-TALKS" style="height:34px;width:auto;display:block"></dd>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:14px">
+      <dt style="font:600 10px/1 Sora,sans-serif;letter-spacing:.18em;text-transform:uppercase;color:#7f8ca3">Emissão · validade</dt>
+      <dd style="margin:0;font:600 17px/1.35 Sora,sans-serif;display:flex;flex-direction:column;justify-content:center;height:58px">Agosto de 2026<span style="font:400 13px/1.4 'IBM Plex Sans',sans-serif;color:#9aa8bf">Válida por 30 dias</span></dd>
+    </div>
+  </dl>
+</section>
+
+<footer style="padding:28px 0;background:#0a0f1e;border-top:1px solid #1e2a44;color:#7f8ca3;font-size:12px">
+  <div style="width:min(1200px,calc(100% - 48px));margin:0 auto;display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;align-items:center">
+    <span>© 2026 H-TALKS · by Heads Tecnologia</span>
+    <span>Momentus OS · Onda 1 E-commerce · proposta confidencial</span>
+  </div>
+</footer>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;mostrarInvestimento&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Conteúdo&quot;},&quot;mostrarProgresso&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Comportamento&quot;},&quot;animarEntrada&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Comportamento&quot;}}">
+class Component extends DCLogic {
+  renderVals() {
+    return { mostrarInvestimento: this.props.mostrarInvestimento ?? true };
+  }
+  componentDidMount() {
+    const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const bar = document.querySelector('[data-progress]');
+    if (this.props.mostrarProgresso === false && bar) bar.style.display = 'none';
+
+    if (!reduce && this.props.animarEntrada !== false) {
+      const io = new IntersectionObserver((ents) => {
+        ents.forEach((e) => {
+          if (!e.isIntersecting) return;
+          e.target.style.opacity = '';
+          e.target.style.animation = 'rise .6s ease both';
+          io.unobserve(e.target);
+        });
+      }, { threshold: 0.01 });
+      requestAnimationFrame(() => document.querySelectorAll('[data-reveal]').forEach((el) => {
+        if (el.dataset.armed) return;
+        el.dataset.armed = '1';
+        el.style.opacity = '0';
+        io.observe(el);
+      }));
+      this._safety = setTimeout(() => {
+        io.disconnect();
+        document.querySelectorAll('[data-reveal]').forEach((el) => { el.style.opacity = ''; });
+      }, 1200);
+    }
+
+    const links = [...document.querySelectorAll('[data-navlink]')];
+    const setActive = (id) => links.forEach((l) => {
+      const on = l.dataset.navlink === id;
+      l.style.color = on ? '#ffffff' : '#9aa8bf';
+      l.style.background = on ? '#16203a' : 'transparent';
+      if (on) l.setAttribute('aria-current', 'true'); else l.removeAttribute('aria-current');
+    });
+    const secs = links.map((l) => document.getElementById(l.dataset.navlink)).filter(Boolean);
+
+    this._onScroll = () => {
+      if (bar && this.props.mostrarProgresso !== false) {
+        const h = document.documentElement;
+        const max = h.scrollHeight - h.clientHeight;
+        bar.style.width = (max > 0 ? Math.min(100, (h.scrollTop / max) * 100) : 0) + '%';
+      }
+      let cur = null;
+      secs.forEach((s) => { if (s.getBoundingClientRect().top <= 150) cur = s.id; });
+      setActive(cur);
+    };
+    addEventListener('scroll', this._onScroll, { passive: true });
+    this._onScroll();
+  }
+  componentWillUnmount() {
+    clearTimeout(this._safety); removeEventListener('scroll', this._onScroll); }
+}
+</script>
+</body>
+</html>
